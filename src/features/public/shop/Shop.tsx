@@ -154,7 +154,7 @@ const Shop: React.FC = () => {
       } transition-colors duration-300`}
     >
       {/* Hero Section */}
-      <section
+     {/* <section
         className={`py-20 ${
           theme === "dark" ? "bg-primary-900" : "bg-primary-900"
         }`}
@@ -172,7 +172,7 @@ const Shop: React.FC = () => {
             </div>
           </AnimatedSection>
         </div>
-      </section>
+      </section>*/}
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar Filters */}
