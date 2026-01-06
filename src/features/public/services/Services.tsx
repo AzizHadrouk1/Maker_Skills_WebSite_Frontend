@@ -53,32 +53,7 @@ const Services: React.FC = () => {
 
   return (
     <div className={`min-h-screen ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} transition-colors duration-300`}>
-      {/* Hero Section with Background Image */}
-      <section className="relative py-32 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <div className="relative w-full h-full">
-            <img
-              src="src/assets/enfants-faisant-robot_23-2148863381.avif"
-              alt="Services Background"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/80" />
-          </div>
-        </div>
-        
-        {/* Hero Content */}
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center text-white">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Nos Services
-            </h1>
-            <p className="text-xl md:text-2xl max-w-4xl mx-auto opacity-90 leading-relaxed">
-              Des solutions technologiques sur mesure pour accompagner votre transformation digitale
-            </p>
-          </div>
-        </div>
-      </section>
+    
 
       {/* Interactive Services Showcase */}
       <section className={`py-20 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-50'}`}>

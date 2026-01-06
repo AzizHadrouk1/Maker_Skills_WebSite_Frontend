@@ -23,7 +23,7 @@ jobs:
             nvm use node
 
             cd ~/frontend
-            git pull origin prod
+            git pull origin main
             npm install
             npm run build
 

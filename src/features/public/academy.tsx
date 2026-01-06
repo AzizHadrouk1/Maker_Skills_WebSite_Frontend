@@ -184,25 +184,7 @@ const Academy: React.FC = () => {
       } transition-colors duration-300`}
     >
       {/* Hero Section */}
-      <section
-        className={`py-20 ${
-          theme === "dark" ? "bg-primary-900" : "bg-primary-900"
-        }`}
-      >
-        <div className="container mx-auto px-4">
-          <AnimatedSection>
-            <div className="text-center text-white">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                {t.academy?.title || "Académie"}
-              </h1>
-              <p className="text-xl max-w-3xl mx-auto opacity-90">
-                Découvrez notre gamme complète de formations, bootcamps,
-                workshops et événements
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      
 
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
