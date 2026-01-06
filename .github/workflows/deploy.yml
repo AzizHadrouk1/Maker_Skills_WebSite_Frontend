@@ -3,7 +3,7 @@ name: Deploy Frontend (Vite + React)
 on:
   push:
     branches:
-      - prod
+      - main
 
 jobs:
   deploy:
