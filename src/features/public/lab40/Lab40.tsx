@@ -159,7 +159,7 @@ const Lab40: React.FC = () => {
                       <h3 className={`text-xl font-bold mb-3 ${
                         theme === "dark" ? "text-white" : "text-gray-900"
                       }`}>
-                        Laboratoire
+                        {laboratory.title}
                       </h3>
 
                       {laboratory.description && (
