@@ -338,11 +338,13 @@ const LaboratoryReservation: React.FC = () => {
                           </div>
                           
                           {material.coverImagePath || material.imageUrl ? (
-                            <div className="mt-3 h-32 overflow-hidden rounded-lg">
+                            <div className={`mt-3 h-32 overflow-hidden rounded-lg flex items-center justify-center ${
+                              theme === "dark" ? "bg-gray-700" : "bg-gray-100"
+                            }`}>
                               <img
                                 src={getImageUrl(material.coverImagePath || material.imageUrl)}
                                 alt={material.name}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-contain"
                               />
                             </div>
                           ) : null}
@@ -541,10 +543,11 @@ const LaboratoryReservation: React.FC = () => {
 
           {/* Sidebar - Summary */}
           <div className="lg:col-span-1">
-            <AnimatedSection delay={0.3}>
-              <div className={`rounded-xl p-6 shadow-lg sticky top-8 ${
-                theme === "dark" ? "bg-gray-800" : "bg-white"
-              }`}>
+            <div className="sticky top-24">
+              <AnimatedSection delay={0.3}>
+                <div className={`rounded-xl p-6 shadow-lg ${
+                  theme === "dark" ? "bg-gray-800" : "bg-white"
+                }`}>
                 <h2 className={`text-2xl font-bold mb-6 ${
                   theme === "dark" ? "text-white" : "text-gray-900"
                 }`}>
@@ -654,7 +657,8 @@ const LaboratoryReservation: React.FC = () => {
                   )}
                 </div>
               </div>
-            </AnimatedSection>
+              </AnimatedSection>
+            </div>
           </div>
         </div>
       </div>
