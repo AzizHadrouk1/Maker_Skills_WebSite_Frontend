@@ -235,17 +235,11 @@ const LaboratoryReservation: React.FC = () => {
           <div className="lg:col-span-2 space-y-6">
             {/* Laboratory Info */}
             <AnimatedSection>
-              <div className={`rounded-xl overflow-hidden shadow-lg ${
+              <div className={`rounded-xl overflow-hidden shadow-lg flex flex-col md:flex-row ${
                 theme === "dark" ? "bg-gray-800" : "bg-white"
               }`}>
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={getImageUrl(laboratory.coverImagePath || laboratory.imageUrl)}
-                    alt={laboratory.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
+                {/* Text Content - Left */}
+                <div className="p-6 flex-1 flex flex-col justify-center">
                   <h2 className={`text-2xl font-bold mb-4 ${
                     theme === "dark" ? "text-white" : "text-gray-900"
                   }`}>
@@ -265,6 +259,16 @@ const LaboratoryReservation: React.FC = () => {
                       Tarif horaire: {laboratory.hourlyRate} DT
                     </span>
                   </div>
+                </div>
+                {/* Image - Right */}
+                <div className={`relative w-full md:w-1/2 min-h-64 md:min-h-96 overflow-hidden flex items-center justify-center ${
+                  theme === "dark" ? "bg-gray-900" : "bg-gray-100"
+                }`}>
+                  <img
+                    src={getImageUrl(laboratory.coverImagePath || laboratory.imageUrl)}
+                    alt={laboratory.title}
+                    className="w-full h-full object-contain max-h-full"
+                  />
                 </div>
               </div>
             </AnimatedSection>
