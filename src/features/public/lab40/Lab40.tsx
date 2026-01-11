@@ -145,13 +145,14 @@ const Lab40: React.FC = () => {
                     } border ${theme === "dark" ? "border-gray-700" : "border-gray-200"} flex flex-col h-full`}
                   >
                     {/* Image */}
-                    <div className="relative h-64 overflow-hidden">
+                    <div className={`relative h-64 overflow-hidden flex items-center justify-center ${
+                      theme === "dark" ? "bg-gray-800" : "bg-gray-100"
+                    }`}>
                       <img
                         src={getImageUrl(laboratory.coverImagePath || laboratory.imageUrl)}
                         alt={laboratory.title}
-                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                        className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     </div>
 
                     {/* Content */}
