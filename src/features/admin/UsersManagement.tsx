@@ -400,7 +400,7 @@ const UsersManagement: React.FC = () => {
         )}
 
         {/* Modal for Detailed Information */}
-        {selectedDetails && (
+        {selectedDetails?.event != null && selectedDetails?.participant != null && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -430,6 +430,10 @@ const UsersManagement: React.FC = () => {
               >
                 Détails de l'Événement et du Participant
               </h2>
+              {(() => {
+                const evt = selectedDetails.event?.event;
+                const participant = selectedDetails.participant;
+                return (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Event Details */}
                 <div className="border-l-4 border-orange-500 pl-4">
@@ -449,7 +453,7 @@ const UsersManagement: React.FC = () => {
                           theme === "dark" ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        {selectedDetails.event.eventName}
+                        {selectedDetails.event?.eventName ?? evt?.name ?? "N/A"}
                       </span>
                     </div>
                     <div className="flex items-start">
@@ -459,7 +463,7 @@ const UsersManagement: React.FC = () => {
                           theme === "dark" ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        {selectedDetails.event.event.type}
+                        {evt?.type ?? "N/A"}
                       </span>
                     </div>
                     <div className="flex items-start">
@@ -471,7 +475,7 @@ const UsersManagement: React.FC = () => {
                           theme === "dark" ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        {formatDate(selectedDetails.event.event.startDate)}
+                        {evt?.startDate ? formatDate(evt.startDate) : evt?.dateDebut ? formatDate(evt.dateDebut) : "N/A"}
                       </span>
                     </div>
                     <div className="flex items-start">
@@ -481,7 +485,7 @@ const UsersManagement: React.FC = () => {
                           theme === "dark" ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        {selectedDetails.event.event.duration}
+                        {evt?.duration ?? "N/A"}
                       </span>
                     </div>
                     <div className="flex items-start">
@@ -491,8 +495,7 @@ const UsersManagement: React.FC = () => {
                           theme === "dark" ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        {selectedDetails.event.event.price} (Réduction:{" "}
-                        {selectedDetails.event.event.reduction}%)
+                        {evt?.price != null ? `${evt.price} (Réduction: ${evt.reduction ?? 0}%)` : "N/A"}
                       </span>
                     </div>
                     <div className="flex items-start">
@@ -502,8 +505,7 @@ const UsersManagement: React.FC = () => {
                           theme === "dark" ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        {selectedDetails.event.event.address} (
-                        {selectedDetails.event.event.location})
+                        {evt?.address != null ? `${evt.address}${evt.location != null ? ` (${evt.location})` : ""}` : "N/A"}
                       </span>
                     </div>
                     <div className="flex items-start">
@@ -515,11 +517,10 @@ const UsersManagement: React.FC = () => {
                           theme === "dark" ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        {selectedDetails.event.event.certification
-                          ? "Oui"
-                          : "Non"}
+                        {evt?.certification ? "Oui" : "Non"}
                       </span>
                     </div>
+                    {evt?.instructor != null && (
                     <div className="flex items-start">
                       <span className="font-medium w-32 text-sm">
                         Formateur:
@@ -529,12 +530,14 @@ const UsersManagement: React.FC = () => {
                           theme === "dark" ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        {selectedDetails.event.event.instructor.name} (
-                        {selectedDetails.event.event.instructor.title},{" "}
-                        {selectedDetails.event.event.instructor.experienceYears}{" "}
+                        {evt.instructor.name ?? "N/A"} (
+                        {evt.instructor.title ?? ""},{" "}
+                        {evt.instructor.experienceYears ?? 0}{" "}
                         ans d'expérience)
                       </span>
                     </div>
+                    )}
+                    {(evt?.modules?.length ?? 0) > 0 && (
                     <div className="flex items-start">
                       <span className="font-medium w-32 text-sm">Modules:</span>
                       <ul
@@ -542,14 +545,16 @@ const UsersManagement: React.FC = () => {
                           theme === "dark" ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        {selectedDetails.event.event.modules.map((module) => (
-                          <li key={module._id}>
+                        {(evt.modules || []).map((module: any, idx: number) => (
+                          <li key={module?._id ?? idx}>
                             <BookOpen className="h-4 w-4 inline-block mr-2 text-orange-500" />
-                            {module.title}: {module.items.join(", ")}
+                            {module?.title ?? ""}: {(module?.items ?? []).join(", ")}
                           </li>
                         ))}
                       </ul>
                     </div>
+                    )}
+                    {(evt?.required?.length ?? 0) > 0 && (
                     <div className="flex items-start">
                       <span className="font-medium w-32 text-sm">
                         Prérequis:
@@ -559,9 +564,11 @@ const UsersManagement: React.FC = () => {
                           theme === "dark" ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        {selectedDetails.event.event.required.join(", ")}
+                        {(evt.required || []).join(", ")}
                       </span>
                     </div>
+                    )}
+                    {(evt?.includedInEvent?.length ?? 0) > 0 && (
                     <div className="flex items-start">
                       <span className="font-medium w-32 text-sm">Inclus:</span>
                       <span
@@ -569,9 +576,11 @@ const UsersManagement: React.FC = () => {
                           theme === "dark" ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        {selectedDetails.event.event.includedInEvent.join(", ")}
+                        {(evt.includedInEvent || []).join(", ")}
                       </span>
                     </div>
+                    )}
+                    {(evt?.objectives?.length ?? 0) > 0 && (
                     <div className="flex items-start">
                       <span className="font-medium w-32 text-sm">
                         Objectifs:
@@ -581,9 +590,11 @@ const UsersManagement: React.FC = () => {
                           theme === "dark" ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        {selectedDetails.event.event.objectives.join(", ")}
+                        {(evt.objectives || []).join(", ")}
                       </span>
                     </div>
+                    )}
+                    {(evt?.createdAt != null) && (
                     <div className="flex items-start">
                       <span className="font-medium w-32 text-sm">Créé le:</span>
                       <span
@@ -591,9 +602,11 @@ const UsersManagement: React.FC = () => {
                           theme === "dark" ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        {formatDate(selectedDetails.event.event.createdAt)}
+                        {formatDate(evt.createdAt)}
                       </span>
                     </div>
+                    )}
+                    {(evt?.updatedAt != null) && (
                     <div className="flex items-start">
                       <span className="font-medium w-32 text-sm">
                         Mis à jour le:
@@ -603,9 +616,10 @@ const UsersManagement: React.FC = () => {
                           theme === "dark" ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        {formatDate(selectedDetails.event.event.updatedAt)}
+                        {formatDate(evt.updatedAt)}
                       </span>
                     </div>
+                    )}
                   </div>
                 </div>
 
@@ -627,8 +641,7 @@ const UsersManagement: React.FC = () => {
                           theme === "dark" ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        {selectedDetails.participant.firstName}{" "}
-                        {selectedDetails.participant.lastName}
+                        {participant?.firstName ?? ""} {participant?.lastName ?? ""}
                       </span>
                     </div>
                     <div className="flex items-start">
@@ -638,10 +651,10 @@ const UsersManagement: React.FC = () => {
                           theme === "dark" ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        {selectedDetails.participant.email}
+                        {participant?.email ?? "N/A"}
                       </span>
                     </div>
-                    {selectedDetails.participant.organizationName && (
+                    {participant?.organizationName && (
                       <div className="flex items-start">
                         <span className="font-medium w-32 text-sm">
                           Organisation:
@@ -651,11 +664,11 @@ const UsersManagement: React.FC = () => {
                             theme === "dark" ? "text-gray-300" : "text-gray-700"
                           }`}
                         >
-                          {selectedDetails.participant.organizationName}
+                          {participant.organizationName}
                         </span>
                       </div>
                     )}
-                    {selectedDetails?.participant?.phone && (
+                    {participant?.phone && (
                       <div className="flex items-start">
                         <span className="font-medium w-32 text-sm">
                           Téléphone:
@@ -665,10 +678,11 @@ const UsersManagement: React.FC = () => {
                             theme === "dark" ? "text-gray-300" : "text-gray-700"
                           }`}
                         >
-                          {selectedDetails?.participant?.phone}
+                          {participant.phone}
                         </span>
                       </div>
                     )}
+                    {(participant?.createdAt != null) && (
                     <div className="flex items-start">
                       <span className="font-medium w-32 text-sm">
                         Inscrit le:
@@ -678,9 +692,11 @@ const UsersManagement: React.FC = () => {
                           theme === "dark" ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        {formatDate(selectedDetails.participant.createdAt)}
+                        {formatDate(participant.createdAt)}
                       </span>
                     </div>
+                    )}
+                    {(participant?.updatedAt != null) && (
                     <div className="flex items-start">
                       <span className="font-medium w-32 text-sm">
                         Mis à jour le:
@@ -690,12 +706,15 @@ const UsersManagement: React.FC = () => {
                           theme === "dark" ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        {formatDate(selectedDetails.participant.updatedAt)}
+                        {formatDate(participant.updatedAt)}
                       </span>
                     </div>
+                    )}
                   </div>
                 </div>
               </div>
+                );
+              })()}
             </motion.div>
           </motion.div>
         )}
