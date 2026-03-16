@@ -14,6 +14,12 @@ import {
   Target,
   BookOpen,
   DollarSign,
+  Briefcase,
+  GraduationCap,
+  UserCircle,
+  Rocket,
+  Wrench,
+  Globe,
 } from "lucide-react";
 import { useStore } from "../../stores/useStore";
 import AnimatedSection from "../../components/UI/AnimatedSection";
@@ -309,14 +315,20 @@ const FormationDetail: React.FC = () => {
               {event.modules && event.modules[0].title !== "" && event.modules.length > 0 && (
                 <AnimatedSection>
                   <div>
-                    <h2
-                      className={`text-2xl font-bold mb-6 ${
-                        theme === "dark" ? "text-white" : "text-gray-900"
-                      }`}
-                    >
-                      <BookOpen className="h-6 w-6 inline mr-2" />
-                      Programme détaillé
-                    </h2>
+                    <div className="flex flex-col items-center mb-8">
+                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-3 ${
+                        theme === "dark" ? "bg-orange-500/20" : "bg-orange-100"
+                      }`}>
+                        <BookOpen className="h-7 w-7 text-orange-500" />
+                      </div>
+                      <h2
+                        className={`text-2xl font-bold text-center ${
+                          theme === "dark" ? "text-white" : "text-gray-900"
+                        }`}
+                      >
+                        Programme détaillé
+                      </h2>
+                    </div>
                     <div className="space-y-4">
                       {event.modules.map((module, index) => (
                         module?.title ? 
@@ -374,6 +386,150 @@ const FormationDetail: React.FC = () => {
                 </AnimatedSection>
               )}
 
+              {/* Choose Your Learning Plan */}
+              <AnimatedSection>
+                <div className={`rounded-2xl p-8 md:p-10 ${
+                  theme === "dark" ? "bg-gray-800/50" : "bg-gray-50"
+                }`}>
+                  <div className="flex flex-col items-center mb-8">
+                    <h2
+                      className={`text-2xl md:text-3xl font-bold text-center ${
+                        theme === "dark" ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      Choisissez votre formule
+                    </h2>
+                    <p className={`text-center mt-2 text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
+                      Sélectionnez l'option qui vous correspond
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                    {/* Pack 1: Kit + Formation */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.1 }}
+                      className={`flex flex-col h-full p-6 md:p-8 rounded-2xl border-2 ${
+                        theme === "dark"
+                          ? "bg-gray-800 border-gray-700 hover:border-orange-500/50 shadow-lg"
+                          : "bg-white border-gray-200 hover:border-orange-300 shadow-md hover:shadow-xl"
+                      } transition-all duration-300`}
+                    >
+                      <div className="flex-1 flex flex-col items-center text-center">
+                        <span className="text-xs font-semibold uppercase tracking-wider text-orange-500">
+                          Kit + Formation
+                        </span>
+                        <h3
+                          className={`text-lg font-bold mt-3 mb-4 ${
+                            theme === "dark" ? "text-white" : "text-gray-900"
+                          }`}
+                        >
+                          Acheter le kit avec la formation
+                        </h3>
+                        <p
+                          className={`text-sm ${
+                            theme === "dark" ? "text-gray-400" : "text-gray-600"
+                          }`}
+                        >
+                          Recevez tout le matériel nécessaire pour réaliser les projets en pratique et suivez la formation complète. Apprenez en construisant concrètement.
+                        </p>
+                      </div>
+                      <motion.button
+                        onClick={() => navigate(`/partcipate/${event._id}`)}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="mt-6 w-full py-3.5 bg-orange-500 text-white font-semibold rounded-xl hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/25"
+                      >
+                        S'inscrire maintenant
+                      </motion.button>
+                    </motion.div>
+
+                    {/* Pack 2: Formation seule */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2 }}
+                      className={`flex flex-col h-full p-6 md:p-8 rounded-2xl border-2 ${
+                        theme === "dark"
+                          ? "bg-gray-800 border-gray-700 hover:border-orange-500/50 shadow-lg"
+                          : "bg-white border-gray-200 hover:border-orange-300 shadow-md hover:shadow-xl"
+                      } transition-all duration-300`}
+                    >
+                      <div className="flex-1 flex flex-col items-center text-center">
+                        <span className="text-xs font-semibold uppercase tracking-wider text-orange-500">
+                          Formation seule
+                        </span>
+                        <h3
+                          className={`text-lg font-bold mt-3 mb-4 ${
+                            theme === "dark" ? "text-white" : "text-gray-900"
+                          }`}
+                        >
+                          Acheter seulement la formation
+                        </h3>
+                        <p
+                          className={`text-sm ${
+                            theme === "dark" ? "text-gray-400" : "text-gray-600"
+                          }`}
+                        >
+                          Accédez à tout le programme en ligne à votre rythme. Idéal si vous avez déjà le matériel ou souhaitez commencer sans kit.
+                        </p>
+                      </div>
+                      <motion.button
+                        onClick={() => navigate(`/partcipate/${event._id}`)}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="mt-6 w-full py-3.5 bg-orange-500 text-white font-semibold rounded-xl hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/25"
+                      >
+                        S'inscrire maintenant
+                      </motion.button>
+                    </motion.div>
+
+                    {/* Pack 3: Workshop chez vous */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 }}
+                      className={`flex flex-col h-full p-6 md:p-8 rounded-2xl border-2 ${
+                        theme === "dark"
+                          ? "bg-gray-800 border-gray-700 hover:border-orange-500/50 shadow-lg"
+                          : "bg-white border-gray-200 hover:border-orange-300 shadow-md hover:shadow-xl"
+                      } transition-all duration-300`}
+                    >
+                      <div className="flex-1 flex flex-col items-center text-center">
+                        <span className="text-xs font-semibold uppercase tracking-wider text-orange-500">
+                          Workshop sur mesure
+                        </span>
+                        <h3
+                          className={`text-lg font-bold mt-3 mb-4 ${
+                            theme === "dark" ? "text-white" : "text-gray-900"
+                          }`}
+                        >
+                          Un workshop chez vous
+                        </h3>
+                        <p
+                          className={`text-sm ${
+                            theme === "dark" ? "text-gray-400" : "text-gray-600"
+                          }`}
+                        >
+                          Nos experts se déplacent dans votre établissement ou entreprise avec le matériel pour animer un atelier pratique. Apprentissage en groupe, sur mesure.
+                        </p>
+                      </div>
+                      <motion.button
+                        onClick={() => navigate(`/partcipate/${event._id}`)}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="mt-6 w-full py-3.5 bg-orange-500 text-white font-semibold rounded-xl hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/25"
+                      >
+                        S'inscrire maintenant
+                      </motion.button>
+                    </motion.div>
+                  </div>
+                </div>
+              </AnimatedSection>
+
               {/* Learning Objectives */}
           
 
@@ -381,14 +537,20 @@ const FormationDetail: React.FC = () => {
               {event.products && event.products.length > 0 && (
                 <AnimatedSection>
                   <div>
-                    <h2
-                      className={`text-2xl font-bold mb-6 ${
-                        theme === "dark" ? "text-white" : "text-gray-900"
-                      }`}
-                    >
-                      <Package className="h-6 w-6 inline mr-2" />
-                      Produits recommandés
-                    </h2>
+                    <div className="flex flex-col items-center mb-8">
+                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-3 ${
+                        theme === "dark" ? "bg-orange-500/20" : "bg-orange-100"
+                      }`}>
+                        <Package className="h-7 w-7 text-orange-500" />
+                      </div>
+                      <h2
+                        className={`text-2xl font-bold text-center ${
+                          theme === "dark" ? "text-white" : "text-gray-900"
+                        }`}
+                      >
+                        Produits recommandés
+                      </h2>
+                    </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {event.products.map((product, index) => (
                         <a
@@ -428,6 +590,132 @@ const FormationDetail: React.FC = () => {
 
             {/* Sidebar */}
             <div className="space-y-8">
+              {/* What you'll get with MakerSkills */}
+              <AnimatedSection>
+                <div
+                  className={`p-6 rounded-xl ${
+                    theme === "dark" ? "bg-gray-800" : "bg-gray-50"
+                  }`}
+                >
+                  <h3
+                    className={`text-lg font-bold mb-4 ${
+                      theme === "dark" ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    What you'll get with MakerSkills
+                  </h3>
+                  <ul className="space-y-4">
+                    <li className="flex items-start space-x-3">
+                      <Briefcase className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <span className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+                          Practical Project Kits
+                        </span>
+                        <p className={`text-sm mt-0.5 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
+                          Get everything you need to build real-world projects and apply what you learn instantly.
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <GraduationCap className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <span className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+                          Structured Learning Paths
+                        </span>
+                        <p className={`text-sm mt-0.5 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
+                          Step-by-step training programs designed to take you from beginner to professional.
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <Award className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <span className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+                          Industry-Ready Certificate
+                        </span>
+                        <p className={`text-sm mt-0.5 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
+                          Earn certificates that prove your practical skills and help you stand out to employers.
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <UserCircle className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <span className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+                          Expert Mentorship
+                        </span>
+                        <p className={`text-sm mt-0.5 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
+                          Learn directly from experienced engineers and get guidance throughout your journey.
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </AnimatedSection>
+
+              {/* What you'll become */}
+              <AnimatedSection>
+                <div
+                  className={`p-6 rounded-xl ${
+                    theme === "dark" ? "bg-gray-800" : "bg-gray-50"
+                  }`}
+                >
+                  <h3
+                    className={`text-lg font-bold mb-4 ${
+                      theme === "dark" ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    What you'll become
+                  </h3>
+                  <ul className="space-y-4">
+                    <li className="flex items-start space-x-3">
+                      <Rocket className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <span className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+                          Real-World Builder
+                        </span>
+                        <p className={`text-sm mt-0.5 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
+                          Create innovative tech projects that demonstrate your real engineering abilities.
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <Wrench className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <span className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+                          Practical Problem Solver
+                        </span>
+                        <p className={`text-sm mt-0.5 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
+                          Develop hands-on skills that go beyond theory and prepare you for real industry challenges.
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <Briefcase className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <span className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+                          Strong Tech Portfolio
+                        </span>
+                        <p className={`text-sm mt-0.5 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
+                          Build a portfolio of projects that showcases your capabilities to clients and recruiters.
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <Globe className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <span className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+                          Career Ready Professional
+                        </span>
+                        <p className={`text-sm mt-0.5 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
+                          Gain the confidence and technical skills needed to land freelance projects or tech jobs.
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </AnimatedSection>
+
               {/* Instructor */}
               {event.instructor?.name && (
                 <AnimatedSection>
