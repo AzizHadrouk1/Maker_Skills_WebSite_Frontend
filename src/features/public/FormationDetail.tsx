@@ -404,7 +404,7 @@ const FormationDetail: React.FC = () => {
                     </p>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-                    {/* Pack 1: Kit + Formation */}
+                    {/* Pack 1: Formation en groupe */}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -418,21 +418,35 @@ const FormationDetail: React.FC = () => {
                     >
                       <div className="flex-1 flex flex-col items-center text-center">
                         <span className="text-xs font-semibold uppercase tracking-wider text-orange-500">
-                          Kit + Formation
+                          En groupe
                         </span>
                         <h3
                           className={`text-lg font-bold mt-3 mb-4 ${
                             theme === "dark" ? "text-white" : "text-gray-900"
                           }`}
                         >
-                          Acheter le kit avec la formation
+                          Apprendre Ensemble. Payer Moins
                         </h3>
                         <p
                           className={`text-sm ${
                             theme === "dark" ? "text-gray-400" : "text-gray-600"
                           }`}
                         >
-                          Recevez tout le matériel nécessaire pour réaliser les projets en pratique et suivez la formation complète. Apprenez en construisant concrètement.
+                          Rejoignez la formation en groupe et bénéficiez d&apos;un tarif réduit.
+                        </p>
+                        <p
+                          className={`text-sm mt-3 ${
+                            theme === "dark" ? "text-gray-400" : "text-gray-600"
+                          }`}
+                        >
+                          Apprenez avec vos amis et profitez d&apos;une réduction spéciale pour les équipes.
+                        </p>
+                        <p
+                          className={`text-sm mt-3 ${
+                            theme === "dark" ? "text-gray-500" : "text-gray-500"
+                          }`}
+                        >
+                          Vous pouvez ajouter des amis plus tard.
                         </p>
                       </div>
                       <motion.button
@@ -445,7 +459,7 @@ const FormationDetail: React.FC = () => {
                       </motion.button>
                     </motion.div>
 
-                    {/* Pack 2: Formation seule */}
+                    {/* Pack 2: Formation + Kit d'apprentissage */}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -459,21 +473,35 @@ const FormationDetail: React.FC = () => {
                     >
                       <div className="flex-1 flex flex-col items-center text-center">
                         <span className="text-xs font-semibold uppercase tracking-wider text-orange-500">
-                          Formation seule
+                          Kit inclus
                         </span>
                         <h3
                           className={`text-lg font-bold mt-3 mb-4 ${
                             theme === "dark" ? "text-white" : "text-gray-900"
                           }`}
                         >
-                          Acheter seulement la formation
+                          Formation + Kit d&apos;apprentissage
                         </h3>
                         <p
                           className={`text-sm ${
                             theme === "dark" ? "text-gray-400" : "text-gray-600"
                           }`}
                         >
-                          Accédez à tout le programme en ligne à votre rythme. Idéal si vous avez déjà le matériel ou souhaitez commencer sans kit.
+                          Achetez la formation avec votre kit et payez moins.
+                        </p>
+                        <p
+                          className={`text-sm mt-3 ${
+                            theme === "dark" ? "text-gray-400" : "text-gray-600"
+                          }`}
+                        >
+                          Profitez d&apos;une expérience complète avec la formation et le kit matériel pour réaliser vos projets pratiques.
+                        </p>
+                        <p
+                          className={`text-sm mt-3 ${
+                            theme === "dark" ? "text-gray-500" : "text-gray-500"
+                          }`}
+                        >
+                          Vous pouvez ajouter des amis plus tard.
                         </p>
                       </div>
                       <motion.button
@@ -482,11 +510,11 @@ const FormationDetail: React.FC = () => {
                         whileTap={{ scale: 0.98 }}
                         className="mt-6 w-full py-3.5 bg-orange-500 text-white font-semibold rounded-xl hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/25"
                       >
-                        S'inscrire maintenant
+                        S&apos;inscrire maintenant
                       </motion.button>
                     </motion.div>
 
-                    {/* Pack 3: Workshop chez vous */}
+                    {/* Pack 3: Workshop sur site */}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -499,22 +527,22 @@ const FormationDetail: React.FC = () => {
                       } transition-all duration-300`}
                     >
                       <div className="flex-1 flex flex-col items-center text-center">
-                        <span className="text-xs font-semibold uppercase tracking-wider text-orange-500">
-                          Workshop sur mesure
+                        <span className="text-xs font-semibold text-orange-500">
+                          Vous le voulez dans votre établissement ?
                         </span>
                         <h3
                           className={`text-lg font-bold mt-3 mb-4 ${
                             theme === "dark" ? "text-white" : "text-gray-900"
                           }`}
                         >
-                          Un workshop chez vous
+                          Organisez un Workshop pratique
                         </h3>
                         <p
                           className={`text-sm ${
                             theme === "dark" ? "text-gray-400" : "text-gray-600"
                           }`}
                         >
-                          Nos experts se déplacent dans votre établissement ou entreprise avec le matériel pour animer un atelier pratique. Apprentissage en groupe, sur mesure.
+                          Nos experts se déplacent dans votre école, université ou entreprise avec l&apos;équipement nécessaire pour animer un atelier pratique et immersif.
                         </p>
                       </div>
                       <motion.button
@@ -523,7 +551,7 @@ const FormationDetail: React.FC = () => {
                         whileTap={{ scale: 0.98 }}
                         className="mt-6 w-full py-3.5 bg-orange-500 text-white font-semibold rounded-xl hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/25"
                       >
-                        S'inscrire maintenant
+                        Postuler maintenant
                       </motion.button>
                     </motion.div>
                   </div>
@@ -590,7 +618,7 @@ const FormationDetail: React.FC = () => {
 
             {/* Sidebar */}
             <div className="space-y-8">
-              {/* What you'll get with MakerSkills */}
+              {/* Ce que vous obtiendrez avec MakerSkills */}
               <AnimatedSection>
                 <div
                   className={`p-6 rounded-xl ${
@@ -602,17 +630,17 @@ const FormationDetail: React.FC = () => {
                       theme === "dark" ? "text-white" : "text-gray-900"
                     }`}
                   >
-                    What you'll get with MakerSkills
+                    Ce que vous obtiendrez avec MakerSkills
                   </h3>
                   <ul className="space-y-4">
                     <li className="flex items-start space-x-3">
                       <Briefcase className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
                       <div>
                         <span className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
-                          Practical Project Kits
+                          Kits de projets pratiques
                         </span>
                         <p className={`text-sm mt-0.5 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
-                          Get everything you need to build real-world projects and apply what you learn instantly.
+                          Obtenez tout ce qu&apos;il vous faut pour réaliser des projets concrets et mettre immédiatement en pratique ce que vous apprenez.
                         </p>
                       </div>
                     </li>
@@ -620,10 +648,10 @@ const FormationDetail: React.FC = () => {
                       <GraduationCap className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
                       <div>
                         <span className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
-                          Structured Learning Paths
+                          Parcours d&apos;apprentissage structurés
                         </span>
                         <p className={`text-sm mt-0.5 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
-                          Step-by-step training programs designed to take you from beginner to professional.
+                          Des programmes de formation étape par étape conçus pour vous amener du niveau débutant au niveau professionnel.
                         </p>
                       </div>
                     </li>
@@ -631,10 +659,10 @@ const FormationDetail: React.FC = () => {
                       <Award className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
                       <div>
                         <span className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
-                          Industry-Ready Certificate
+                          Certificat reconnu par l&apos;industrie
                         </span>
                         <p className={`text-sm mt-0.5 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
-                          Earn certificates that prove your practical skills and help you stand out to employers.
+                          Obtenez des certificats qui attestent de vos compétences pratiques et vous aident à vous démarquer auprès des employeurs.
                         </p>
                       </div>
                     </li>
@@ -642,10 +670,10 @@ const FormationDetail: React.FC = () => {
                       <UserCircle className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
                       <div>
                         <span className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
-                          Expert Mentorship
+                          Mentorat d&apos;experts
                         </span>
                         <p className={`text-sm mt-0.5 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
-                          Learn directly from experienced engineers and get guidance throughout your journey.
+                          Apprenez directement auprès d&apos;ingénieurs expérimentés et bénéficiez d&apos;un accompagnement tout au long de votre parcours.
                         </p>
                       </div>
                     </li>
@@ -653,7 +681,7 @@ const FormationDetail: React.FC = () => {
                 </div>
               </AnimatedSection>
 
-              {/* What you'll become */}
+              {/* Ce que vous deviendrez */}
               <AnimatedSection>
                 <div
                   className={`p-6 rounded-xl ${
@@ -665,17 +693,17 @@ const FormationDetail: React.FC = () => {
                       theme === "dark" ? "text-white" : "text-gray-900"
                     }`}
                   >
-                    What you'll become
+                    Ce que vous deviendrez
                   </h3>
                   <ul className="space-y-4">
                     <li className="flex items-start space-x-3">
                       <Rocket className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
                       <div>
                         <span className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
-                          Real-World Builder
+                          Créateur de projets réels
                         </span>
                         <p className={`text-sm mt-0.5 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
-                          Create innovative tech projects that demonstrate your real engineering abilities.
+                          Concevez des projets technologiques innovants qui démontrent vos véritables capacités en ingénierie.
                         </p>
                       </div>
                     </li>
@@ -683,10 +711,10 @@ const FormationDetail: React.FC = () => {
                       <Wrench className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
                       <div>
                         <span className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
-                          Practical Problem Solver
+                          Solutionneur de problèmes concrets
                         </span>
                         <p className={`text-sm mt-0.5 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
-                          Develop hands-on skills that go beyond theory and prepare you for real industry challenges.
+                          Développez des compétences pratiques qui vont au-delà de la théorie et vous préparent aux défis réels de l&apos;industrie.
                         </p>
                       </div>
                     </li>
@@ -694,10 +722,10 @@ const FormationDetail: React.FC = () => {
                       <Briefcase className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
                       <div>
                         <span className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
-                          Strong Tech Portfolio
+                          Portfolio technique solide
                         </span>
                         <p className={`text-sm mt-0.5 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
-                          Build a portfolio of projects that showcases your capabilities to clients and recruiters.
+                          Constituez un portfolio de projets qui met en valeur vos compétences auprès des clients et des recruteurs.
                         </p>
                       </div>
                     </li>
@@ -705,10 +733,10 @@ const FormationDetail: React.FC = () => {
                       <Globe className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
                       <div>
                         <span className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
-                          Career Ready Professional
+                          Professionnel prêt pour le marché
                         </span>
                         <p className={`text-sm mt-0.5 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
-                          Gain the confidence and technical skills needed to land freelance projects or tech jobs.
+                          Acquérez la confiance et les compétences techniques nécessaires pour décrocher des missions en freelance ou des emplois dans la tech.
                         </p>
                       </div>
                     </li>
