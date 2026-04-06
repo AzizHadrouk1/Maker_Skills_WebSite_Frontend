@@ -24,8 +24,8 @@ const Header: React.FC = () => {
   }, []);
 
   const navItems = [
-    { path: "/lab40", label: t.nav.lab40 },
     { path: "/", label: t.nav.home },
+    { path: "/lab40", label: t.nav.lab40 },
     { path: "/services", label: t.nav.services },
     {
       path: "/academy",
